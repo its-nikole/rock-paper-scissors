@@ -18,6 +18,7 @@ function checkForWinner(playerSelection) {
     
     if(playerSelection === computerChoise) {
       console.log("Tie")
+      incrementScore(yourScore), incrementScore(computerScore)
     } else if (playerSelection === choises[0] && computerChoise === choises[2]) {
       console.log("Win")
       incrementScore(yourScore)
