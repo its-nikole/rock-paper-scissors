@@ -30,29 +30,42 @@ function checkForWinner(playerSelection) {
     }   
 }
 
-function addEmojiChoice(playerSelection, computerChoise) {
+function addYourEmoji(playerSelection) {
   if(playerSelection === choises[0]) {
     yourEmoji.innerHTML = "✊"
   } else if (playerSelection === choises[1]) {
     yourEmoji.innerHTML = "✋"
-  } else if (playerSelection === choises[3]) {
+  } else if (playerSelection === choises[2]) {
     yourEmoji.innerHTML = "✌"
+  } 
+}
+
+function addComputerEmoji(computerChoise) {
+  if (computerChoise === choises[0]) {
+    computerEmoji.innerHTML = "✊"
+  } else if (computerChoise === choises[1]) {
+    computerEmoji.innerHTML = "✋"
+  } else if (computerChoise === choises[2]) {
+    computerEmoji.innerHTML = "✌"
   }
 }
 
 rockBtn.addEventListener('click', (e) => {
     checkForWinner(e.target.id)
-    addEmojiChoice()
+    addYourEmoji(e.target.id)
+    addComputerEmoji(getComputerChoice())
 })
 
 
 paperBtn.addEventListener('click', (e) => {
     checkForWinner(e.target.id)
-    addEmojiChoice()
+    addYourEmoji(e.target.id)
+    addComputerEmoji(getComputerChoice())
 })
 
 scissorsBtn.addEventListener('click', (e) => {
     checkForWinner(e.target.id)
-    addEmojiChoice()
+    addYourEmoji(e.target.id)
+    addComputerEmoji(getComputerChoice())
 })
 
