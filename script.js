@@ -44,24 +44,27 @@ function incrementScore(newScore) {
   newScore.innerHTML = Number(newScore.innerText) +1
 } 
 
+function emojiDiv(){
+  document.createElement
+}
 
 function addYourEmoji(playerSelection) {
   if(playerSelection === choises[0]) {
-    yourEmoji.innerHTML = "✊"
+    yourEmoji.innerHTML += "✊"
   } else if (playerSelection === choises[1]) {
-    yourEmoji.innerHTML = "✋"
+    yourEmoji.innerHTML += "✋"
   } else if (playerSelection === choises[2]) {
-    yourEmoji.innerHTML = "✌"
+    yourEmoji.innerHTML += "✌"
   } 
 }
 
 function addComputerEmoji(computerChoise) {
   if (computerChoise === choises[0]) {
-    computerEmoji.innerHTML = "✊"
+    computerEmoji.innerHTML += "✊"
   } else if (computerChoise === choises[1]) {
-    computerEmoji.innerHTML = "✋"
+    computerEmoji.innerHTML += "✋"
   } else if (computerChoise === choises[2]) {
-    computerEmoji.innerHTML = "✌"
+    computerEmoji.innerHTML += "✌"
   }
 }
 
