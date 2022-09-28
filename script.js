@@ -42,6 +42,7 @@ function incrementScore(newScore) {
 function emojiDiv() {
   document.createElement;
 }
+
 const drawEmoji = (element, emoji) => {
   element.innerHTML += emoji;
 };
