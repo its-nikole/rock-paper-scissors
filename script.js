@@ -9,6 +9,8 @@ const computerEmoji = document.querySelector(".computer-output");
 const yourScore = document.getElementById("yourScore");
 const computerScore = document.getElementById("computerScore");
 const newRoundBtn = document.querySelector('.new-round-button');
+const gameOverTextEl = document.querySelector('.game-over-text');
+const modalEl = document.querySelector('.modal')
 
  
 
@@ -44,7 +46,7 @@ function emojiDiv() {
 }
 
 const drawEmoji = (element, emoji) => {
-  element.innerHTML += emoji;
+  element.innerHTML += `<div>${emoji}</div>`;
 };
 
 const getEmoji = (choice) => {
@@ -59,7 +61,7 @@ const addEmoji = (choise, type) => {
     : drawEmoji(computerEmoji, getEmoji(choise));
 };
 
-const whoGetsScore = (outcome) => {
+const addScore = (outcome) => {
   if (outcome === "Tie") {
     
     incrementScore(yourScore);
@@ -70,40 +72,36 @@ const whoGetsScore = (outcome) => {
 };
 
 const checkIfGameOver = () => {
-  currentRound +=1
+  currentRound += 1
 
-  if(currentRound === totalRounds){
+  if(currentRound === totalRounds) {
     const playerPrintedScore = yourScore.innerText
     const computerPrintedScore = computerScore.innerText
     gameOverState()
     if(playerPrintedScore === computerPrintedScore){
-      console.log("Tie")
+      gameOverTextEl.innerText = 'Tie!'
       return
     }
-    playerPrintedScore> computerPrintedScore ? console.log("You win") : console.log("Computer wins")
+   gameOverTextEl.innerText = playerPrintedScore > computerPrintedScore ? "You win" : "Computer wins"
   }
-
 }
+
 const gameOverState = () => {
   rockBtn.setAttribute('disabled', true)
   paperBtn.setAttribute('disabled',true)
   scissorsBtn.setAttribute('disabled',true)
-  newRoundBtn.classList.remove('hidden')
-
+  modalEl.style.display = 'block'
+  
 }
-
-
-
 
 const clickHandler = (event) => {
   const generatedComputerChoice = getComputerChoice();
   const playerChoice = event.target.id;
   const outcome = checkForWinner(playerChoice, generatedComputerChoice);
-  whoGetsScore(outcome);
+  addScore(outcome);
   addEmoji(playerChoice, "player");
   addEmoji(generatedComputerChoice, "computer");
   checkIfGameOver()
-
 };
 
 rockBtn.addEventListener("click", clickHandler);
@@ -112,8 +110,8 @@ paperBtn.addEventListener("click", clickHandler);
 
 scissorsBtn.addEventListener("click", clickHandler);
 
-newRoundBtn.addEventListener('click', function(){
-  newRoundBtn.classList.add('hidden')
+newRoundBtn.addEventListener('click', function() {
+  modalEl.style.display = 'none'
   rockBtn.removeAttribute('disabled')
   paperBtn.removeAttribute('disabled')
   scissorsBtn.removeAttribute('disabled')
@@ -122,4 +120,4 @@ newRoundBtn.addEventListener('click', function(){
   playerEmoji.innerHTML = ''
   computerEmoji.innerHTML=''
   currentRound = 0
-})
+});
